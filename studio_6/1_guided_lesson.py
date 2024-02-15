@@ -16,15 +16,15 @@ student_2_major = "Chemistry"
 student_2_expected_graduation_year = "2025"
 
 # TODO: Create a new student student_3 following the same format
-
-
-
-
-
+student_3_id = 18736362
+student_3_name = "Max"
+student_3_last_name = "john"
+student_3_major = "Psychology"
+student_3_expected_graduation_year = "2027"
 # Discussion: What are some problems with this approach?
-
-
-
+''' You could sort a student by the ID number instead of student 1,2,3. You could also make the id number mean stuff.
+like for entance 109 is a computer science degree 27 is their grad year and 1882762 is the first letter of their first name followed by the 3 letters of their last name 
+'''
 
 
 
@@ -35,16 +35,27 @@ student_2_expected_graduation_year = "2025"
 # Basic structure of a class
 class Student:
     # TODO: Let's build this class!
-    def __init__(self):
-        pass
+    def __init__(self, id, first_name, last_name, major, graduation_year):
+        self.__id = id 
+        self.first_name = first_name
+        self.last_name = last_name
+        self.major = major 
+        self.graduation_year = graduation_year
+
+    @property
+    def id(self):
+        return self.__id
+    
+    def get_full_name(self):
+        
+        return self.first_name + " " + self.last_name
 
 
 
 # TODO: Let's recreate our 3 students as objects of our new class!
-
-
-
-
+student_1 = Student(18584831,"Daniel", "White", "Computer Science", "2026")
+student_2 = Student(18582185, "Jennie", "Kim", "Chemistry", "2025")
+student_3 = Student(18736362, "Max", "john", "Psychology", "2027")
 
 
 
@@ -53,7 +64,8 @@ class Student:
     
 # TODO: Make the id private.
 # Test your code and ensure you cannot access student_1.__id (you should see an error)
-    
+print(student_1.id)
+print(student_1.get_full_name)
 
 
 
@@ -63,7 +75,6 @@ class Student:
 # TODO: Add an @property getter for id
 # Test to make sure you can get the id with student_1.id
     
-
 
 # What if we want a way to just get the last four of the id instead of the whole thing? We can build a custom class method to do this.
     
@@ -78,11 +89,14 @@ class Student:
 # The class inherited from is known as the parent class
     
 # TODO: Create a child class called GradStudent which inherits from the Student class, with the additional property of "specialization"
-
+class GradStudent(student):
+    def __init__(self, id, first_name, last_name, major, graduation_year, specialization):
+        super().__init__(id, first_name, last_name, major, graduation_year)
+        self.specialization = specialization
 
 # create a new student_4 which uses GradStudent instead.
 # this person's major is Computer Science and their Specialization is Artifical Intelligence
-    
+student_4 = GradStudent(1772653, "Josh", "kennety", "computer science", "2024", "Artificial Intelligence")
 
 # OOP Property - Polymorphism
 # refers to methods/functions/operators with the same name that can be executed on many objects or classes.
@@ -103,5 +117,3 @@ class Student:
     
 # This is the end of the OOP lesson. Look at part_2.py for the follow up to this lesson. 
     
-
-
